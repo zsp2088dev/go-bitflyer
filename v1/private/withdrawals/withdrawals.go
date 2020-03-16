@@ -1,7 +1,7 @@
 package withdrawals
 
 import (
-	"github.com/google/go-querystring/query"
+	"github.com/json-iterator/go"
 	"net/http"
 )
 
@@ -22,6 +22,8 @@ type Withdrawal struct {
 	EventDate    string `json:"event_date"`
 }
 
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
+
 type Status string
 
 const (
@@ -34,14 +36,17 @@ func (req *Request) Endpoint() string {
 }
 
 func (req *Request) Method() string {
-	return http.MethodGet
+	return http.MethodPost
 }
 
 func (req *Request) Query() string {
-	values, _ := query.Values(req)
-	return values.Encode()
+	return ""
 }
 
 func (req *Request) Payload() []byte {
-	return nil
+	b, err := json.Marshal(*req)
+	if err != nil {
+		return nil
+	}
+	return b
 }

@@ -1,7 +1,6 @@
 package sendparentorder
 
 import (
-	"github.com/google/go-querystring/query"
 	"github.com/json-iterator/go"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
@@ -56,8 +55,7 @@ func (req *Request) Method() string {
 }
 
 func (req *Request) Query() string {
-	values, _ := query.Values(req)
-	return values.Encode()
+	return ""
 }
 
 func (req *Request) Payload() []byte {
