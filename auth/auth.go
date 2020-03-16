@@ -20,10 +20,17 @@ type Auth struct {
 func CreateHeaders(auth *Auth, req api.Request, u *url.URL) *http.Header {
 	timestamp := fmt.Sprintf("%d", time.Now().Unix())
 
+	var path string
+	if req.Query() != "" {
+		path = u.Path + "?" + u.RawQuery
+	} else {
+		path = u.Path
+	}
+
 	h := hmac.New(sha256.New, []byte(auth.APISecret))
 	h.Write([]byte(timestamp))
 	h.Write([]byte(req.Method()))
-	h.Write([]byte(u.Path + "?" + u.RawQuery))
+	h.Write([]byte(path))
 	if req.Payload() != nil {
 		h.Write(req.Payload())
 	}

@@ -1,7 +1,6 @@
 package withdrawals
 
 import (
-	"github.com/google/go-querystring/query"
 	"github.com/json-iterator/go"
 	"net/http"
 )
@@ -41,8 +40,7 @@ func (req *Request) Method() string {
 }
 
 func (req *Request) Query() string {
-	values, _ := query.Values(req)
-	return values.Encode()
+	return ""
 }
 
 func (req *Request) Payload() []byte {
