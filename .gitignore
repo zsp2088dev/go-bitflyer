@@ -1,0 +1,13 @@
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.sum
+
+# General
+.idea/
+.DS_Store
