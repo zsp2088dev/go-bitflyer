@@ -23,10 +23,11 @@ type Channel struct {
 }
 
 func (c *Channel) String() string {
-	if c.ProductCode != "" {
-		return fmt.Sprintf("lightning_%s_%s", c.Event, c.ProductCode)
-	} else {
+	if c.Event == ChildOrderEvents || c.Event == ParentOrderEvents {
 		return fmt.Sprintf("%s", c.Event)
+	} else {
+		return fmt.Sprintf("lightning_%s_%s", c.Event, c.ProductCode)
+
 	}
 }
 

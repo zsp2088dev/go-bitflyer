@@ -57,13 +57,13 @@ func main() {
 
 	// Realtime API
 	channel1 := realtime.Channel{ProductCode: types.FXBTCJPY, Event: realtime.Executions}
-	channel2 := realtime.Channel{ProductCode: types.FXBTCJPY, Event: realtime.ChildOrderEvents}
+	channel2 := realtime.Channel{Event: realtime.ChildOrderEvents}
 
 	// Privateチャンネルを購読する場合は ".Auth(config)" を呼び出す
 	wsClient := realtime.New([]realtime.Channel{channel1, channel2}).Auth(config)
 
 	// realtime.Response型で各種メッセージを受信
-	ch := make(chan realtime.Response, 10)
+	ch := make(chan realtime.Response)
 	go wsClient.ReceiveMessage(ch)
 
 	for {
