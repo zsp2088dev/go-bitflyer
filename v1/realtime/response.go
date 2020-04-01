@@ -76,7 +76,7 @@ type ChildOrderEvent struct {
 	ExpireDate             string            `json:"expire_date"`
 	Reason                 string            `json:"reason"`
 	ExecID                 int               `json:"exec_id"`
-	Side                   string            `json:"side"`
+	Side                   types.Side        `json:"side"`
 	Price                  float64           `json:"price"`
 	Size                   float64           `json:"size"`
 	Commission             float64           `json:"commission"`
@@ -103,7 +103,7 @@ type ParentOrderEvent struct {
 	ChildOrderType          string            `json:"child_order_type"`
 	ParameterIndex          int               `json:"parameter_index"`
 	ChildOrderAcceptanceID  string            `json:"child_order_acceptance_id"`
-	Side                    string            `json:"side"`
+	Side                    types.Side        `json:"side"`
 	Price                   float64           `json:"price"`
 	Size                    float64           `json:"size"`
 	ExpireDate              string            `json:"expire_date"`
