@@ -8,7 +8,7 @@ import (
 
 type Request struct {
 	ProductCode            types.ProductCode `url:"product_code"`
-	ChildOrderState        string            `url:"child_order_state,omitempty"`
+	ChildOrderState        ChildOrderState   `url:"child_order_state,omitempty"`
 	ChildOrderID           string            `url:"child_order_id,omitempty"`
 	ChildOrderAcceptanceID string            `url:"child_order_acceptance_id,omitempty"`
 	ParentOrderID          string            `url:"parent_order_id,omitempty"`
@@ -28,7 +28,7 @@ type ChildOrder struct {
 	Price                  float64              `json:"price"`
 	AveragePrice           float64              `json:"average_price"`
 	Size                   float64              `json:"size"`
-	ChildOrderState        string               `json:"child_order_state"`
+	ChildOrderState        ChildOrderState      `json:"child_order_state"`
 	ExpireDate             string               `json:"expire_date"`
 	ChildOrderDate         string               `json:"child_order_date"`
 	ChildOrderAcceptanceID string               `json:"child_order_acceptance_id"`
@@ -37,6 +37,16 @@ type ChildOrder struct {
 	ExecutedSize           float64              `json:"executed_size"`
 	TotalCommission        float64              `json:"total_commission"`
 }
+
+type ChildOrderState string
+
+const (
+	Active    ChildOrderState = "ACTIVE"
+	Completed ChildOrderState = "COMPLETED"
+	Canceled  ChildOrderState = "CANCELED"
+	Expired   ChildOrderState = "EXPIRED"
+	Rejected  ChildOrderState = "REJECTED"
+)
 
 func (req *Request) Endpoint() string {
 	return "/v1/me/getchildorders"
