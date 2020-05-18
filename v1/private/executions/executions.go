@@ -2,6 +2,7 @@ package executions
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -17,14 +18,14 @@ type Request struct {
 type Response []Execution
 
 type Execution struct {
-	ID                     int        `json:"id"`
-	ChildOrderID           string     `json:"child_order_id"`
-	Side                   types.Side `json:"side"`
-	Price                  float64    `json:"price"`
-	Size                   float64    `json:"size"`
-	Commission             int        `json:"commission"`
-	ExecDate               string     `json:"exec_date"`
-	ChildOrderAcceptanceID string     `json:"child_order_acceptance_id"`
+	ID                     int               `json:"id"`
+	ChildOrderID           string            `json:"child_order_id"`
+	Side                   types.Side        `json:"side"`
+	Price                  float64           `json:"price"`
+	Size                   float64           `json:"size"`
+	Commission             int               `json:"commission"`
+	ExecDate               time.BitFlyerTime `json:"exec_date"`
+	ChildOrderAcceptanceID string            `json:"child_order_acceptance_id"`
 }
 
 func (req *Request) Endpoint() string {

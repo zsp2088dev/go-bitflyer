@@ -2,6 +2,7 @@ package coinouts
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -24,7 +25,7 @@ type CoinOut struct {
 	Fee           float64            `json:"fee"`
 	AdditionalFee float64            `json:"additional_fee"`
 	Status        Status             `json:"status"`
-	EventDate     string             `json:"event_date"`
+	EventDate     time.BitFlyerTime  `json:"event_date"`
 }
 
 type Status string
