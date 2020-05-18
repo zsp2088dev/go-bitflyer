@@ -2,6 +2,7 @@ package positions
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -20,7 +21,7 @@ type Position struct {
 	Commission          float64           `json:"commission"`
 	SwapPointAccumulate float64           `json:"swap_point_accumulate"`
 	RequireCollateral   float64           `json:"require_collateral"`
-	OpenDate            string            `json:"open_date"`
+	OpenDate            time.BitFlyerTime `json:"open_date"`
 	Leverage            float64           `json:"leverage"`
 	Pnl                 float64           `json:"pnl"`
 	Sfd                 float64           `json:"sfd"`

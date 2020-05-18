@@ -2,6 +2,7 @@ package balancehistory
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -17,7 +18,7 @@ type Response []BalanceHistory
 
 type BalanceHistory struct {
 	ID           int               `json:"id"`
-	TradeDate    string            `json:"trade_date"`
+	TradeDate    time.BitFlyerTime `json:"trade_date"`
 	ProductCode  types.ProductCode `json:"product_code"`
 	CurrencyCode string            `json:"currency_code"`
 	TradeType    TradeType         `json:"trade_type"`

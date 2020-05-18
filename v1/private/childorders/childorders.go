@@ -2,6 +2,7 @@ package childorders
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -29,8 +30,8 @@ type ChildOrder struct {
 	AveragePrice           float64              `json:"average_price"`
 	Size                   float64              `json:"size"`
 	ChildOrderState        ChildOrderState      `json:"child_order_state"`
-	ExpireDate             string               `json:"expire_date"`
-	ChildOrderDate         string               `json:"child_order_date"`
+	ExpireDate             time.BitFlyerTime    `json:"expire_date"`
+	ChildOrderDate         time.BitFlyerTime    `json:"child_order_date"`
 	ChildOrderAcceptanceID string               `json:"child_order_acceptance_id"`
 	OutstandingSize        float64              `json:"outstanding_size"`
 	CancelSize             float64              `json:"cancel_size"`

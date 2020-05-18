@@ -1,8 +1,9 @@
 package parentorder
 
 import (
-	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
+	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
 
@@ -11,12 +12,12 @@ type Request struct {
 }
 
 type Response struct {
-	ID                      int         `json:"id"`
-	ParentOrderID           string      `json:"parent_order_id"`
-	OrderMethod             string      `json:"order_method"`
-	ExpireDate              int         `json:"expire_date"`
-	Parameters              []Parameter `json:"parameters"`
-	ParentOrderAcceptanceID string      `json:"parent_order_acceptance_id"`
+	ID                      int               `json:"id"`
+	ParentOrderID           string            `json:"parent_order_id"`
+	OrderMethod             string            `json:"order_method"`
+	ExpireDate              time.BitFlyerTime `json:"expire_date"`
+	Parameters              []Parameter       `json:"parameters"`
+	ParentOrderAcceptanceID string            `json:"parent_order_acceptance_id"`
 }
 
 type Parameter struct {

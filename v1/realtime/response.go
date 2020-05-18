@@ -4,6 +4,7 @@ import (
 	"github.com/zsp2088dev/go-bitflyer/v1/public/board"
 	"github.com/zsp2088dev/go-bitflyer/v1/public/executions"
 	"github.com/zsp2088dev/go-bitflyer/v1/public/ticker"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 )
 
@@ -70,10 +71,10 @@ type ChildOrderEvent struct {
 	ProductCode            types.ProductCode    `json:"product_code"`
 	ChildOrderID           string               `json:"child_order_id"`
 	ChildOrderAcceptanceID string               `json:"child_order_acceptance_id"`
-	EventDate              string               `json:"event_date"`
+	EventDate              time.BitFlyerTime    `json:"event_date"`
 	EventType              EventType            `json:"event_type"`
 	ChildOrderType         types.ChildOrderType `json:"child_order_type"`
-	ExpireDate             string               `json:"expire_date"`
+	ExpireDate             time.BitFlyerTime    `json:"expire_date"`
 	Reason                 string               `json:"reason"`
 	ExecID                 int                  `json:"exec_id"`
 	Side                   types.Side           `json:"side"`
@@ -96,7 +97,7 @@ type ParentOrderEvent struct {
 	ProductCode             types.ProductCode    `json:"product_code"`
 	ParentOrderID           string               `json:"parent_order_id"`
 	ParentOrderAcceptanceID string               `json:"parent_order_acceptance_id"`
-	EventDate               string               `json:"event_date"`
+	EventDate               time.BitFlyerTime    `json:"event_date"`
 	EventType               EventType            `json:"event_type"`
 	ParentOrderType         string               `json:"parent_order_type"`
 	Reason                  string               `json:"reason"`
@@ -106,5 +107,5 @@ type ParentOrderEvent struct {
 	Side                    types.Side           `json:"side"`
 	Price                   float64              `json:"price"`
 	Size                    float64              `json:"size"`
-	ExpireDate              string               `json:"expire_date"`
+	ExpireDate              time.BitFlyerTime    `json:"expire_date"`
 }

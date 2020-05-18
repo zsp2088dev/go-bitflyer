@@ -2,6 +2,7 @@ package collateralhistory
 
 import (
 	"github.com/google/go-querystring/query"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"github.com/zsp2088dev/go-bitflyer/v1/types"
 	"net/http"
 )
@@ -20,7 +21,7 @@ type CollateralHistory struct {
 	Change       float64            `json:"change"`
 	Amount       float64            `json:"amount"`
 	ReasonCode   string             `json:"reason_code"`
-	Date         string             `json:"date"`
+	Date         time.BitFlyerTime  `json:"date"`
 }
 
 func (req *Request) Endpoint() string {

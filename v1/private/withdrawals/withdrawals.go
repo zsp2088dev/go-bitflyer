@@ -2,6 +2,7 @@ package withdrawals
 
 import (
 	"github.com/json-iterator/go"
+	"github.com/zsp2088dev/go-bitflyer/v1/time"
 	"net/http"
 )
 
@@ -14,12 +15,12 @@ type Request struct {
 type Response []Withdrawal
 
 type Withdrawal struct {
-	ID           int    `json:"id"`
-	OrderID      string `json:"order_id"`
-	CurrencyCode string `json:"currency_code"`
-	Amount       int    `json:"amount"`
-	Status       Status `json:"status"`
-	EventDate    string `json:"event_date"`
+	ID           int               `json:"id"`
+	OrderID      string            `json:"order_id"`
+	CurrencyCode string            `json:"currency_code"`
+	Amount       int               `json:"amount"`
+	Status       Status            `json:"status"`
+	EventDate    time.BitFlyerTime `json:"event_date"`
 }
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
