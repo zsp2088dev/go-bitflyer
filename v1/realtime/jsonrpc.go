@@ -17,12 +17,17 @@ type JsonRpcClient struct {
 	auth     *auth.Auth
 }
 
-func New(channels []Channel) *JsonRpcClient {
-	return &JsonRpcClient{Channels: channels}
+func New() *JsonRpcClient {
+	return &JsonRpcClient{}
 }
 
 func (c *JsonRpcClient) Auth(auth *auth.Auth) *JsonRpcClient {
 	c.auth = auth
+	return c
+}
+
+func (c *JsonRpcClient) AddChannel(channel Channel) *JsonRpcClient {
+	c.Channels = append(c.Channels, channel)
 	return c
 }
 
