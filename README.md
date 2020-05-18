@@ -61,7 +61,7 @@ func main() {
 
 	// Privateチャンネルを購読する場合は ".Auth(config)" を呼び出す
 	wsClient := realtime.
-        New().
+		New().
 		Auth(config).
 		AddChannel(channel1).
 		AddChannel(channel2)
