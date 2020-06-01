@@ -9,6 +9,9 @@ import (
 
 type Request struct {
 	ProductCode types.ProductCode `url:"product_code"`
+	Count       int               `url:"count,omitempty"`
+	Before      int               `url:"before,omitempty"`
+	After       int               `url:"after,omitempty"`
 }
 
 type Response []Execution
