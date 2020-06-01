@@ -6,6 +6,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/json-iterator/go"
 	"github.com/zsp2088dev/go-bitflyer/auth"
+	"time"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -58,6 +59,12 @@ func (c *JsonRpcClient) ReceiveMessage(ch chan Response) {
 
 	// メッセージを受信
 	for {
+		// 3分間受信出来ていない場合は接続切れ
+		if err := conn.SetReadDeadline(time.Now().Add(180 * time.Second)); err != nil {
+			ch <- Response{Error: err}
+			return
+		}
+
 		_, msg, err := conn.ReadMessage()
 		if err != nil {
 			ch <- Response{Error: err}
